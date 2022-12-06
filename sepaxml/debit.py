@@ -158,7 +158,6 @@ class SepaDD(SepaPaymentInitn):
         CreDtTm_node = ET.Element("CreDtTm")
         NbOfTxs_node = ET.Element("NbOfTxs")
         CtrlSum_node = ET.Element("CtrlSum")
-        InitgPty_node = ET.Element("InitgPty")
         Nm_node = ET.Element("Nm")
         SupId_node = ET.Element("Id")
         # OrgId_node = ET.Element("OrgId")
@@ -175,13 +174,10 @@ class SepaDD(SepaPaymentInitn):
         Othr_node.append(Id_node)
         # OrgId_node.append(Othr_node)
         # SupId_node.append(OrgId_node)
-        InitgPty_node.append(Nm_node)
-        InitgPty_node.append(SupId_node)
         GrpHdr_node.append(MsgId_node)
         GrpHdr_node.append(CreDtTm_node)
         GrpHdr_node.append(NbOfTxs_node)
         GrpHdr_node.append(CtrlSum_node)
-        GrpHdr_node.append(InitgPty_node)
 
         # Append the header to its parent
         CstmrDrctDbtInitn_node.append(GrpHdr_node)
