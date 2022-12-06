@@ -357,6 +357,7 @@ class SepaDD(SepaPaymentInitn):
         present. Will fold the nodes accordingly and the call the
         _add_to_batch_list function to store the batch.
         """
+        TX_nodes['PmtIdNode'].append(TX_nodes['InstrIdNode'])
         TX_nodes['PmtIdNode'].append(TX_nodes['EndToEndIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['PmtIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['InstdAmtNode'])
@@ -365,6 +366,7 @@ class SepaDD(SepaPaymentInitn):
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['DtOfSgntrNode'])
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['AmdmntIndNode'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['MndtRltdInfNode'])
+        TX_nodes['DrctDbtTxNode'].append(TX_nodes['CdtrSchmeIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['DrctDbtTxNode'])
 
         if 'BIC_DbtrAgt_Node' in TX_nodes and TX_nodes['BIC_DbtrAgt_Node'].text is not None:
