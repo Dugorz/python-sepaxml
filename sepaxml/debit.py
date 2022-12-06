@@ -513,10 +513,10 @@ class SepaDD(SepaPaymentInitn):
             PmtInf_nodes['SchmeNmNode'].append(PmtInf_nodes['PrtryNode'])
             PmtInf_nodes['OthrNode'].append(PmtInf_nodes['SchmeNmNode'])
             PmtInf_nodes['PrvtIdNode'].append(PmtInf_nodes['OthrNode'])
-            PmtInf_nodes['Id_CdtrSchmeId_Node'].append(
-                PmtInf_nodes['PrvtIdNode'])
-            PmtInf_nodes['CdtrSchmeIdNode'].append(
-                PmtInf_nodes['Id_CdtrSchmeId_Node'])
+            # PmtInf_nodes['Id_CdtrSchmeId_Node'].append(
+            #     PmtInf_nodes['PrvtIdNode'])
+            # PmtInf_nodes['CdtrSchmeIdNode'].append(
+            #     PmtInf_nodes['Id_CdtrSchmeId_Node'])
             # PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
 
             for txnode in batch_nodes:
