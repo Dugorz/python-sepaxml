@@ -546,12 +546,6 @@
             <xs:totalDigits value="18"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:complexType name="OrganisationIdentification4">
-        <xs:sequence>
-            <xs:element maxOccurs="1" minOccurs="0" name="BICOrBEI" type="AnyBICIdentifier"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
-        </xs:sequence>
-    </xs:complexType>
     <xs:complexType name="OrganisationIdentificationSchemeName1Choice">
         <xs:sequence>
             <xs:choice>
