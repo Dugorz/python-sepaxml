@@ -218,8 +218,6 @@ class SepaDD(SepaPaymentInitn):
             ED['Othr_CdtrAgt_Node'] = ET.Element("Othr")
             ED['Id_CdtrAgt_Node'] = ET.Element("Id")
         ED['ChrgBrNode'] = ET.Element("ChrgBr")
-        ED['CdtrSchmeIdNode'] = ET.Element("CdtrSchmeId")
-        ED['Id_CdtrSchmeId_Node'] = ET.Element("Id")
         ED['PrvtIdNode'] = ET.Element("PrvtId")
         ED['OthrNode'] = ET.Element("Othr")
         ED['Id_Othr_Node'] = ET.Element("Id")
@@ -240,6 +238,8 @@ class SepaDD(SepaPaymentInitn):
         ED['InstdAmtNode'] = ET.Element("InstdAmt")
         ED['DrctDbtTxNode'] = ET.Element("DrctDbtTx")
         ED['MndtRltdInfNode'] = ET.Element("MndtRltdInf")
+        ED['CdtrSchmeIdNode'] = ET.Element("CdtrSchmeId")
+        ED['Id_CdtrSchmeId_Node'] = ET.Element("Id")
         ED['MndtIdNode'] = ET.Element("MndtId")
         ED['DtOfSgntrNode'] = ET.Element("DtOfSgntr")
         ED['AmdmntIndNode'] = ET.Element("AmdmntInd")
@@ -308,10 +308,6 @@ class SepaDD(SepaPaymentInitn):
         PmtInf_nodes['SchmeNmNode'].append(PmtInf_nodes['PrtryNode'])
         PmtInf_nodes['OthrNode'].append(PmtInf_nodes['SchmeNmNode'])
         PmtInf_nodes['PrvtIdNode'].append(PmtInf_nodes['OthrNode'])
-        PmtInf_nodes['Id_CdtrSchmeId_Node'].append(PmtInf_nodes['PrvtIdNode'])
-        PmtInf_nodes['CdtrSchmeIdNode'].append(
-            PmtInf_nodes['Id_CdtrSchmeId_Node'])
-        # PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
 
         TX_nodes['PmtIdNode'].append(TX_nodes['InstrIdNode'])
         TX_nodes['PmtIdNode'].append(TX_nodes['EndToEndIdNode'])
@@ -322,6 +318,8 @@ class SepaDD(SepaPaymentInitn):
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['DtOfSgntrNode'])
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['AmdmntIndNode'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['MndtRltdInfNode'])
+        TX_nodes['Id_CdtrSchmeId_Node'].append(PmtInf_nodes['PrvtIdNode'])
+        TX_nodes['CdtrSchmeIdNode'].append(PmtInf_nodes['Id_CdtrSchmeId_Node'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['CdtrSchmeIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['DrctDbtTxNode'])
 
@@ -366,6 +364,8 @@ class SepaDD(SepaPaymentInitn):
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['DtOfSgntrNode'])
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['AmdmntIndNode'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['MndtRltdInfNode'])
+        TX_nodes['Id_CdtrSchmeId_Node'].append(PmtInf_nodes['PrvtIdNode'])
+        TX_nodes['CdtrSchmeIdNode'].append(PmtInf_nodes['Id_CdtrSchmeId_Node'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['CdtrSchmeIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['DrctDbtTxNode'])
 
