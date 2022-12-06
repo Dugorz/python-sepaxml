@@ -563,7 +563,6 @@
     <xs:complexType name="Party6Choice">
         <xs:sequence>
             <xs:choice>
-                <xs:element name="OrgId" type="OrganisationIdentification4"/>
                 <xs:element name="PrvtId" type="PersonIdentification5"/>
             </xs:choice>
         </xs:sequence>
@@ -600,7 +599,6 @@
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgBr" type="ChargeBearerType1Code"/>
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgsAcct" type="CashAccount16"/>
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgsAcctAgt" type="BranchAndFinancialInstitutionIdentification4"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="CdtrSchmeId" type="PartyIdentification32"/>
             <xs:element maxOccurs="unbounded" minOccurs="1" name="DrctDbtTxInf" type="DirectDebitTransactionInformation9"/>
         </xs:sequence>
     </xs:complexType>

@@ -114,6 +114,7 @@ class SepaDD(SepaPaymentInitn):
 
         TX_nodes['MndtIdNode'].text = payment['mandate_id']
         TX_nodes['DtOfSgntrNode'].text = payment['mandate_date']
+        TX_nodes['AmdmntIndNode'].text = payment['amendment_indicator']
         if bic:
             TX_nodes['BIC_DbtrAgt_Node'].text = payment['BIC']
         else:
@@ -135,6 +136,7 @@ class SepaDD(SepaPaymentInitn):
         TX_nodes['UstrdNode'].text = payment['description']
         if not payment.get('endtoend_id', ''):
             payment['endtoend_id'] = make_id(self._config['name'])
+        TX_nodes['InstrId'].text = payment['instr_id']
         TX_nodes['EndToEndIdNode'].text = payment['endtoend_id']
 
         if self._config['batch']:
@@ -159,7 +161,7 @@ class SepaDD(SepaPaymentInitn):
         InitgPty_node = ET.Element("InitgPty")
         Nm_node = ET.Element("Nm")
         SupId_node = ET.Element("Id")
-        OrgId_node = ET.Element("OrgId")
+        # OrgId_node = ET.Element("OrgId")
         Othr_node = ET.Element("Othr")
         Id_node = ET.Element("Id")
 
@@ -171,8 +173,8 @@ class SepaDD(SepaPaymentInitn):
 
         # Append the nodes
         Othr_node.append(Id_node)
-        OrgId_node.append(Othr_node)
-        SupId_node.append(OrgId_node)
+        # OrgId_node.append(Othr_node)
+        # SupId_node.append(OrgId_node)
         InitgPty_node.append(Nm_node)
         InitgPty_node.append(SupId_node)
         GrpHdr_node.append(MsgId_node)
@@ -233,12 +235,14 @@ class SepaDD(SepaPaymentInitn):
         ED = dict()
         ED['DrctDbtTxInfNode'] = ET.Element("DrctDbtTxInf")
         ED['PmtIdNode'] = ET.Element("PmtId")
+        ED['InstrIdNode'] = ET.Element("InstrId")
         ED['EndToEndIdNode'] = ET.Element("EndToEndId")
         ED['InstdAmtNode'] = ET.Element("InstdAmt")
         ED['DrctDbtTxNode'] = ET.Element("DrctDbtTx")
         ED['MndtRltdInfNode'] = ET.Element("MndtRltdInf")
         ED['MndtIdNode'] = ET.Element("MndtId")
         ED['DtOfSgntrNode'] = ET.Element("DtOfSgntr")
+        ED['AmdmntIndNode'] = ET.Element("AmdmntInd")
         ED['DbtrAgtNode'] = ET.Element("DbtrAgt")
         ED['FinInstnId_DbtrAgt_Node'] = ET.Element("FinInstnId")
         if bic:
@@ -307,15 +311,18 @@ class SepaDD(SepaPaymentInitn):
         PmtInf_nodes['Id_CdtrSchmeId_Node'].append(PmtInf_nodes['PrvtIdNode'])
         PmtInf_nodes['CdtrSchmeIdNode'].append(
             PmtInf_nodes['Id_CdtrSchmeId_Node'])
-        PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
+        # PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
 
+        TX_nodes['PmtIdNode'].append(TX_nodes['InstrIdNode'])
         TX_nodes['PmtIdNode'].append(TX_nodes['EndToEndIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['PmtIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['InstdAmtNode'])
 
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['MndtIdNode'])
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['DtOfSgntrNode'])
+        TX_nodes['MndtRltdInfNode'].append(TX_nodes['AmdmntIndNode'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['MndtRltdInfNode'])
+        TX_nodes['DrctDbtTxNode'].append(TX_nodes['CdtrSchmeIdNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['DrctDbtTxNode'])
 
         if 'BIC_DbtrAgt_Node' in TX_nodes and TX_nodes['BIC_DbtrAgt_Node'].text is not None:
@@ -356,6 +363,7 @@ class SepaDD(SepaPaymentInitn):
 
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['MndtIdNode'])
         TX_nodes['MndtRltdInfNode'].append(TX_nodes['DtOfSgntrNode'])
+        TX_nodes['MndtRltdInfNode'].append(TX_nodes['AmdmntIndNode'])
         TX_nodes['DrctDbtTxNode'].append(TX_nodes['MndtRltdInfNode'])
         TX_nodes['DrctDbtTxInfNode'].append(TX_nodes['DrctDbtTxNode'])
 
@@ -494,7 +502,7 @@ class SepaDD(SepaPaymentInitn):
                 PmtInf_nodes['PrvtIdNode'])
             PmtInf_nodes['CdtrSchmeIdNode'].append(
                 PmtInf_nodes['Id_CdtrSchmeId_Node'])
-            PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
+            # PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
 
             for txnode in batch_nodes:
                 PmtInf_nodes['PmtInfNode'].append(txnode)
