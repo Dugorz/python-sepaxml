@@ -162,8 +162,6 @@ class SepaDD(SepaPaymentInitn):
         CtrlSum_node = ET.Element("CtrlSum")
         InitgPty_node = ET.Element("InitgPty")
         Nm_node = ET.Element("Nm")
-        SupId_node = ET.Element("Id")
-        # OrgId_node = ET.Element("OrgId")
         Othr_node = ET.Element("Othr")
         Id_node = ET.Element("Id")
 
@@ -175,10 +173,7 @@ class SepaDD(SepaPaymentInitn):
 
         # Append the nodes
         Othr_node.append(Id_node)
-        # OrgId_node.append(Othr_node)
-        # SupId_node.append(OrgId_node)
         InitgPty_node.append(Nm_node)
-        # InitgPty_node.append(SupId_node)
         GrpHdr_node.append(MsgId_node)
         GrpHdr_node.append(CreDtTm_node)
         GrpHdr_node.append(NbOfTxs_node)
@@ -515,11 +510,6 @@ class SepaDD(SepaPaymentInitn):
             PmtInf_nodes['SchmeNmNode'].append(PmtInf_nodes['PrtryNode'])
             PmtInf_nodes['OthrNode'].append(PmtInf_nodes['SchmeNmNode'])
             PmtInf_nodes['PrvtIdNode'].append(PmtInf_nodes['OthrNode'])
-            # PmtInf_nodes['Id_CdtrSchmeId_Node'].append(
-            #     PmtInf_nodes['PrvtIdNode'])
-            # PmtInf_nodes['CdtrSchmeIdNode'].append(
-            #     PmtInf_nodes['Id_CdtrSchmeId_Node'])
-            # PmtInf_nodes['PmtInfNode'].append(PmtInf_nodes['CdtrSchmeIdNode'])
 
             for txnode in batch_nodes:
                 PmtInf_nodes['PmtInfNode'].append(txnode)
